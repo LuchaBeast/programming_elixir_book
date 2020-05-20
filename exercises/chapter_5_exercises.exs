@@ -1,31 +1,31 @@
 # Chapter 5
 # Exercise: Functions-2
 
-# fun2 = fn
-#     (0, 0, _c) -> IO.puts "FizzBuzz"
-#     (0, _b, _c) -> IO.puts "Fizz"
-#     (_a, 0, _c) -> IO.puts "Buzz"
-#     (_a, _b, c) -> IO.puts c
-# end
+fun2 = fn
+    (0, 0, _c) -> IO.puts "FizzBuzz"
+    (0, _b, _c) -> IO.puts "Fizz"
+    (_a, 0, _c) -> IO.puts "Buzz"
+    (_a, _b, c) -> IO.puts c
+end
 
-# fun2.(0, 0, 1)
-# fun2.(0, 1, 2)
-# fun2.(1, 0, 2)
-# fun2.(1, 2, 3)
+fun2.(0, 0, 1)
+fun2.(0, 1, 2)
+fun2.(1, 0, 2)
+fun2.(1, 2, 3)
 
 #----------------------
 
 # Exercise: Functions-3
 
-# fun3 = fn n -> fun2.(rem(n,3), rem(n,5), n) end
+fun3 = fn n -> fun2.(rem(n,3), rem(n,5), n) end
 
-# fun3.(10)
-# fun3.(11)
-# fun3.(12)
-# fun3.(13)
-# fun3.(14)
-# fun3.(15)
-# fun3.(16)
+fun3.(10)
+fun3.(11)
+fun3.(12)
+fun3.(13)
+fun3.(14)
+fun3.(15)
+fun3.(16)
 
 #---------------------
 
@@ -35,3 +35,13 @@ prefix = fn str1 -> (fn str2 -> IO.puts "#{str1} #{str2}" end) end
 
 string1 = prefix.("String1")
 final_string = string1.("String2")
+
+#---------------------
+
+# Exercise: Functions-5
+# Use the & notation to rewrite the following
+# – Enum.map [1,2,3,4], fn x -> x + 2 end
+# – Enum.each [1,2,3,4], fn x -> IO.inspect x end
+
+rewrite1 = Enum.map [1, 2, 3, 4], &(&1 + 2)
+rewrite2 = Enum.each [1, 2, 3, 4], &(IO.inspect(&1))
